@@ -1,0 +1,27 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: users-provider
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1.com:6001/eureka
+      #defaultZone: http://eureka1.com:6001/eureka,http://eureka2.com:6002/eureka
+      #defaultZone: http://admin:123@localhost:6001/eureka
+
+
+#熔断的配置
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #include: "*"
+        include: hystrix.stream
+  endpoint:
+    health:
+      show-details: ALWAYS
